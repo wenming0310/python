@@ -1,4 +1,3 @@
-'''
 #!/usr/bin/env python
 import tkinter as tk
 
@@ -16,7 +15,7 @@ class Application(tk.Frame):
 app = Application()
 app.master.title('Sample application')
 app.mainloop()
-'''
+
 '''
 # ipadx设置内部间隙
 # padx设置外部间隙
