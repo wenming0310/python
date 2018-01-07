@@ -1,0 +1,16 @@
+<h1>
+    {{ hello }}
+
+    {{ apple|lower|upper }}
+
+    {#注释 |lower|upper过滤器 #}
+
+    {% if hello == apple %}
+    1
+    {% elif 1 != 2} #没有elif标签
+    2
+    {% else %}
+    3
+    {% endif %}
+    
+</h1>
