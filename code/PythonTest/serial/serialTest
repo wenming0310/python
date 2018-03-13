@@ -58,6 +58,8 @@ app.geometry('470x320+400+100')     #默认窗体大小
 
 
 class ApplicationUIBuild(tk.Frame):
+
+
     time.sleep(1)
 #bulidButtonClick按键点击事件
 def checkButtonClick():
