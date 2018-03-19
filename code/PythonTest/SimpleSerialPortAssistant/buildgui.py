@@ -77,19 +77,21 @@ class ApplicationGuiBuild(tk.Frame):
 
     def Choice(self, event):
         context = self.boxValue.get()
-        #list = ["COM1", 'COM2', 'COM3', 'COM4']
-        list = serialctl.SerialControl.get_serial_number(self)
+        com_list = serialctl.SerialControl.get_serial_number(self)
+        list_com = []
+        for index in range(len(com_list)):
+            #print(com_list[index])
+            list_com.append(str(com_list[index]))
         # port_list = serial.tools.list_ports.comports()
         # for i in range(0, len(port_list)):
         #     print(port_list[i])
         #     list[i] = port_list[i]
         #     print(list[i])
-        print(context)
-        print(list)
-        for context in list:
-            self.port = list[context]
-            #print(self.port)
-            self.ser.setPort(str(self.port))
+        if context in list_com:
+            self.port = list_com.index(context)
+            serialctl.SerialControl.initialization_serial_port(str(self.port))
+
+
 
 
 if __name__=="__main__":

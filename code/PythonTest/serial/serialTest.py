@@ -63,7 +63,7 @@ class ApplicationUIBuild(tk.Frame):
             if lenport_list <= 0:
                 inputLogWindow.insert("The Serial port can't find!")
             else:
-                for i in range(0, len(port_list)):
+                for i in range(0, lenport_list):
                     inputLogWindow.insert(tk.END, port_list[i])
                     inputLogWindow.insert(tk.END, '\n')
                     inputLogWindow.see(tk.END)
