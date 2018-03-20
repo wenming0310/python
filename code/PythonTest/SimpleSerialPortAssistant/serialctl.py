@@ -16,7 +16,7 @@ class SerialControl(object):
         else:
             [print(plist[item]) for item in range(len(plist))]
 
-        self.get_serial_number()
+        #self.get_serial_number()
             #for i in range(len(plist)):
             #    #list[x = list(plist[i])
             #    print(plist[i])
@@ -31,17 +31,6 @@ class SerialControl(object):
 
     def get_serial_number(self):
         plist = serial.tools.list_ports.comports()
-        # plist_list = []
-        # plist_tuple = ()
-        # if len(plist) <= 0:
-        #     print("The Serial port can't find!")
-        # else:
-        #     #[print(plist[item]) for item in range(len(plist))]
-        #     for item in range(len(plist)):
-        #         plist_list.append(plist[item])
-        # plist_tuple = tuple(plist_list)
-        # print(plist_tuple)
-        # return plist_tuple
         return plist
 
 if __name__=="__main__":

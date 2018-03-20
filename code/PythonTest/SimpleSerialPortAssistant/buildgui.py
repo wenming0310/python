@@ -58,35 +58,35 @@ class ApplicationGuiBuild(tk.Frame):
         tk.Frame.__init__(self, master)
         self.grid(sticky=W + E + N + S)  # 上北north、下南south、左西west、右东east
         # 头标签
-        self.create_label(self.master, "串口助手V1.0", None, tk.W, 4, 0, 0)
-        #Label(master, text=configurationfile.row_text_1, bg="gray", fg="white", width=None).grid(row=0, column=0, sticky=tk.W, columnspan=4)
-        self.create_combobox(self.master, serialctl.SerialControl.get_serial_number(self))
+        self.create_label(self.master, configurationfile.row_text_1, 60, tk.W, 4, 0, 0)
+        # 串口下拉选择列表
+        self.create_label(self.master, "串口号", 5, tk.W+tk.N+tk.E, None, 1, 0)
+        self.create_combobox_com(self.master, serialctl.SerialControl.get_serial_number(self), 45, tk.W, None, 1, 1)
+        #波特率下拉列表选择
+        self.create_label(self.master, "波特率", 5, tk.W + tk.N + tk.E, None, 2, 0)
+        self.create_combobox_com(self.master, serialctl.SerialControl.get_serial_number(self), 45, tk.W, None, 2, 1)
 
-    def create_label(self, frame, text , width, sticky, columnspan, x, y):
+
+
+    def create_label(self, frame, text , width, sticky, columnspan, rowx, columny):
         '标签，传递参数依次为frame名称，显示字符串文本，占用宽度，跨几列，坐标x，坐标y'
-        Label(frame, text=text, bg="gray", fg="white", width=width).grid(row=x, column=y, sticky=sticky, columnspan=columnspan)
+        Label(frame, text=text, bg="gray", fg="white", width=width).grid(row=rowx, column=columny, sticky=sticky, columnspan=columnspan)
 
-    def create_combobox(self, frame, boxchoicename):
-        '下拉列表，传递参数依次为frame名称，'
+    def create_combobox_com(self, frame, boxchoicename, width, sticky, columnspan, rowx, columny):
+        '串口下拉列表，传递参数依次为frame名称，显示字符串文本，占用宽度，跨几列，坐标x，坐标y'
         self.boxValue = tk.StringVar()
-        boxChoice = ttk.Combobox(frame, textvariable=self.boxValue, state='readonly')
+        boxChoice = ttk.Combobox(frame, textvariable=self.boxValue, state='readonly',width=width)
         boxChoice['value'] = boxchoicename  #('COM1', 'COM2', 'COM3', 'COM4')
         boxChoice.current(0)
         boxChoice.bind('<<ComboboxSelected>>', self.Choice)
-        boxChoice.grid(row=1, column=0, sticky=tk.W)
+        boxChoice.grid(row=rowx, column=columny, sticky=sticky, columnspan=columnspan)
 
     def Choice(self, event):
         context = self.boxValue.get()
         com_list = serialctl.SerialControl.get_serial_number(self)
         list_com = []
         for index in range(len(com_list)):
-            #print(com_list[index])
             list_com.append(str(com_list[index]))
-        # port_list = serial.tools.list_ports.comports()
-        # for i in range(0, len(port_list)):
-        #     print(port_list[i])
-        #     list[i] = port_list[i]
-        #     print(list[i])
         if context in list_com:
             self.port = list_com.index(context)
             serialctl.SerialControl.initialization_serial_port(str(self.port))
