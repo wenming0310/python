@@ -64,7 +64,7 @@ class ApplicationGuiBuild(tk.Frame):
         self.create_combobox_com(self.master, serialctl.SerialControl.get_serial_number(self), 45, tk.W, None, 1, 1)
         #波特率下拉列表选择
         self.create_label(self.master, "波特率", 5, tk.W + tk.N + tk.E, None, 2, 0)
-        self.create_combobox_com(self.master, serialctl.SerialControl.get_serial_number(self), 45, tk.W, None, 2, 1)
+        self.create_combobox_band(self.master, configurationfile.baudratevhoicevalue, 45, tk.W, None, 2, 1)
 
 
 
@@ -78,10 +78,9 @@ class ApplicationGuiBuild(tk.Frame):
         boxChoice = ttk.Combobox(frame, textvariable=self.boxValue, state='readonly',width=width)
         boxChoice['value'] = boxchoicename  #('COM1', 'COM2', 'COM3', 'COM4')
         boxChoice.current(0)
-        boxChoice.bind('<<ComboboxSelected>>', self.Choice)
+        boxChoice.bind('<<ComboboxSelected>>', self.create_combobox_com_choice)
         boxChoice.grid(row=rowx, column=columny, sticky=sticky, columnspan=columnspan)
-
-    def Choice(self, event):
+    def create_combobox_com_choice(self, event):
         context = self.boxValue.get()
         com_list = serialctl.SerialControl.get_serial_number(self)
         list_com = []
@@ -91,6 +90,23 @@ class ApplicationGuiBuild(tk.Frame):
             self.port = list_com.index(context)
             serialctl.SerialControl.initialization_serial_port(str(self.port))
 
+    def create_combobox_band(self, frame, boxchoicename, width, sticky, columnspan, rowx, columny):
+        '串口下拉列表，传递参数依次为frame名称，显示字符串文本，占用宽度，跨几列，坐标x，坐标y'
+        self.boxValueBaudrate = tk.IntVar()
+        BaudrateChoice = ttk.Combobox(frame, textvariable=self.boxValueBaudrate, state='readonly', width=width)
+        BaudrateChoice['value'] = boxchoicename#configurationfile.baudratevhoicevalue
+        BaudrateChoice.current(0)
+        BaudrateChoice.bind('<<ComboboxSelected>>', self.create_combobox_band_choice)
+        BaudrateChoice.grid(row=rowx, column=columny, sticky=sticky, columnspan=columnspan)
+    def create_combobox_band_choice(self, event):
+        context = self.boxValue.get()
+        com_list = serialctl.SerialControl.get_serial_number(self)
+        list_com = []
+        for index in range(len(com_list)):
+            list_com.append(str(com_list[index]))
+        if context in list_com:
+            self.port = list_com.index(context)
+            serialctl.SerialControl.initialization_serial_port(str(self.port))
 
 
 

@@ -11,5 +11,5 @@ tool_tip_name_3 = '第三页'    #ToolTip工具栏1名称
 
 #buildgui.py
 row_text_1 = "欢迎使用串口助手V0.0" #第一行文本
-
+baudratevhoicevalue = (2400, 4800, 9600, 19200, 38400, 115200)
 #table1首行字符串
