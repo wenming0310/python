@@ -10,6 +10,6 @@ tool_tip_name_2 = '第二页'    #ToolTip工具栏1名称
 tool_tip_name_3 = '第三页'    #ToolTip工具栏1名称
 
 #buildgui.py
-row_text_1 = "欢迎使用串口助手工具" #第一行文本
+row_text_1 = "欢迎使用串口助手V0.0" #第一行文本
 
 #table1首行字符串
