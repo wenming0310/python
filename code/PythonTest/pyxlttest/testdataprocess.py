@@ -7,7 +7,7 @@ from datetime import date,datetime
 
 def read_excel():
     # 打开文件
-    workbook = xlrd.open_workbook(r'D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\1.xls')
+    workbook = xlrd.open_workbook(r'D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\180323.xls')
     # 获取所有sheet
     print(workbook.sheet_names()) #[u'sheet1', u'sheet2'])
     #sheet1_name = workbook.sheet_names()[0]
@@ -19,7 +19,7 @@ def read_excel():
 
 def write_excel():
     # 打开文件
-    workbook = xlrd.open_workbook(r'D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\1.xls')
+    workbook = xlrd.open_workbook(r'D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\180323.xls')
     #workbook1 = xlwt.open_workbook(r'D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\1.xls')  #xlwt用法错误
     sheet1_r = workbook.sheet_by_name('Sheet1')
     #sheet1_w = workbook1.sheet_by_name('Sheet1')

@@ -1,7 +1,7 @@
 # -*- coding=utf-8 -*-
 import re
 from openpyxl import load_workbook
-excel = load_workbook('D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\2018-3-16.xlsx')
+excel = load_workbook('D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\180323.xlsx')
 #获取sheet：
 table = excel.get_sheet_by_name('Sheet1')   #通过表名获取
 #获取行数和列数：
@@ -30,4 +30,4 @@ for i in range(1,rows+1):
         table.cell(row=i-1, column=1, value='')
         table.cell(row=i, column=1, value='')
 
-excel.save('D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\balances180316.xlsx')
+excel.save('D:\\gitee\\YunYouKeJiFeiGongKaiXiangMu\\DataProcess\\balances180323.xlsx')
