@@ -20,7 +20,6 @@ else:
     resaultb = 2
 
 
-
 if (resaulta == 0) or (resaultb == 0):
     print("该年是闰年！")
 else:
