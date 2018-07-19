@@ -45,4 +45,4 @@ audiofile = eyed3.load("auido.mp3")
 #audiofile.tag.title = u"I Am a Girlfriend"
 #audiofile.tag.track_num = 4
 #audiofile.tag.save()
-audiofile.
+#audiofile.
