@@ -6,7 +6,6 @@ try:
 except ImportError:
     from Tkinter import *
 
-
 class Block(object):
     def __init__(self, mmap, x, y, direction=None):
         super(Block, self).__init__()
@@ -138,6 +137,7 @@ class DrawMap(object):
         for y in range(self.mmap.max_y):
             for x in range(self.mmap.max_x):
                 self.draw_cell(self.mmap.mmap[x][y])
+                # print(self.mmap.mmap[x][y])
         self.draw_start()
         self.draw_end()
 
@@ -179,6 +179,9 @@ class TKDrawMap(DrawMap):
 def main():
     m = Map()
     m.gen_map(20, 20)
+    # for nums in m.mmap:
+    #     for num in nums:
+    #         print(m.mmap[num][nums])
     TKDrawMap(m)
 
 if __name__ == '__main__':
